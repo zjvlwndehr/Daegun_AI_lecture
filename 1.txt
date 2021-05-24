@@ -1,0 +1,43 @@
+import matplotlib as mpl
+import matplotlib.pyplot as plt
+import matplotlib.font_manager as fm
+from matplotlib import rc
+
+a=[242, 256,237,223,263,81,46]
+n=len(a)
+sum=0
+weekdaysum=0
+weekendsum=0
+avr=0.0
+i=0
+
+for i in range(0,n):
+  sum += a[i]
+for i in range(0,5):
+  weekdaysum += a[i]
+#for i in range(6):
+#  weekendsum += a[i]
+
+
+avr = sum/n
+print("total  : ",sum)
+print("avr    : ",avr)
+
+print("주중 데이타", a[0:5]);
+print("주중 데이타 계", weekdaysum);
+print("주중 데이타 평균", weekdaysum/5);
+#print("주말 데이타", a[:5]);
+
+font_name = fm.FontProperties(fname = '/usr/share/fonts/truetype/nanum/NanumBarunGothic.ttf').get_name()
+rc('font', family = font_name)
+x_data = ['MON', 'TUE', 'WED', 'THR', 'FRI', 'STA','SUN']
+plt.title('일주일간 유동인구 데이타', fontsize = 16)
+plt.xlabel('요일',fontsize=12)
+plt.ylabel('유동인구수',fontsize=12)
+
+plt.scatter(x_data,a)
+plt.plot(x_data,a)
+plt.show()
+font = fm.findSystemFonts(fontpaths=None, fontext='ttf')
+print(len(font))
+font
